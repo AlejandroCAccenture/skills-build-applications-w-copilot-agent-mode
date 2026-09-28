@@ -1,5 +1,9 @@
 import CollectionPage from './CollectionPage.jsx'
 
+const endpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts`
+  : 'http://localhost:8000/api/workouts'
+
 const columns = [
   { key: 'name', label: 'Workout' },
   { key: 'type', label: 'Type' },
@@ -24,6 +28,7 @@ function Workouts() {
   return (
     <CollectionPage
       resource="workouts"
+      endpoint={endpoint}
       title="Workouts"
       description="A library of sessions to support your next training block."
       columns={columns}

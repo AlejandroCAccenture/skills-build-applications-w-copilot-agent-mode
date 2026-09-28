@@ -1,5 +1,9 @@
 import CollectionPage from './CollectionPage.jsx'
 
+const endpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users`
+  : 'http://localhost:8000/api/users'
+
 const columns = [
   {
     key: 'name',
@@ -14,6 +18,7 @@ function Users() {
   return (
     <CollectionPage
       resource="users"
+      endpoint={endpoint}
       title="Athletes"
       description="People tracking their activity and progress with Octofit."
       columns={columns}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchCollection } from '../api.js'
 
-function CollectionPage({ resource, title, description, columns }) {
+function CollectionPage({ resource, endpoint, title, description, columns }) {
   const [records, setRecords] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -11,7 +11,7 @@ function CollectionPage({ resource, title, description, columns }) {
 
     async function loadRecords() {
       try {
-        setRecords(await fetchCollection(resource, controller.signal))
+        setRecords(await fetchCollection(endpoint, controller.signal))
       } catch (cause) {
         if (!controller.signal.aborted) {
           setRecords([])
@@ -26,7 +26,7 @@ function CollectionPage({ resource, title, description, columns }) {
 
     loadRecords()
     return () => controller.abort()
-  }, [resource])
+  }, [endpoint])
 
   return (
     <section aria-busy={loading}>

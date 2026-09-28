@@ -1,5 +1,9 @@
 import CollectionPage from './CollectionPage.jsx'
 
+const endpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities`
+  : 'http://localhost:8000/api/activities'
+
 function formatDate(value) {
   if (!value) return 'Not recorded'
 
@@ -46,6 +50,7 @@ function Activities() {
   return (
     <CollectionPage
       resource="activities"
+      endpoint={endpoint}
       title="Activity log"
       description="Recent movement and training recorded by your community."
       columns={columns}
