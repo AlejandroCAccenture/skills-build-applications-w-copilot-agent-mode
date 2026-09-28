@@ -1,4 +1,18 @@
-# React + Vite
+# Octofit Tracker Frontend
+
+React 19 presentation tier for Octofit Tracker, with routes for activities, the leaderboard, teams, users, and workouts.
+
+## Configure the API URL
+
+Define `VITE_CODESPACE_NAME` in `octofit-tracker/frontend/.env.local` using your Codespaces name without the `-8000` suffix:
+
+```dotenv
+VITE_CODESPACE_NAME=your-codespace-name
+```
+
+The frontend calls `https://${VITE_CODESPACE_NAME}-8000.app.github.dev/api/[resource]/`. Restart Vite after changing environment variables. If `VITE_CODESPACE_NAME` is unset or blank, requests use `http://localhost:8000`.
+
+The API client supports array responses and paginated responses with `results`, `data`, or `items` arrays.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
